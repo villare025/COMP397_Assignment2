@@ -1,0 +1,37 @@
+/*
+	File Name:             Game - CSS File 
+	Author:                Elaine Mae Villarino 
+	Last Modified By:      Elaine Mae Villarino
+	Last Modified Date:    Tuesday, October 4th, 2016
+	Website Name:          EV - COMP397 - Assignment 1
+	Program Description:   CSS file that contains the styles that render the whole 
+						   COMP397 - Assignment 1 site which is a Choose Your Own Adventure Game.
+*/
+
+/*=================================================
+			1. Common Variables
+==================================================*/
+body {
+    background-color: darkgrey;
+}
+
+.game {
+    width : 50%;
+    margin: 0 auto;
+}
+
+canvas {
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+    margin-left: 10%;
+}
+
+/*=================================================
+			2. Footer - NOT USED CURRENTLY
+==================================================*/
+
+/*=================================================
+			3. @Media Variables - NOT USED CURRENTLY
+==================================================*/
