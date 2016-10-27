@@ -2,7 +2,7 @@
 	File Name:             Config - TS|JS File 
 	Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino 
-	Last Modified Date:    Sunday, October 16th, 2016
+	Last Modified Date:    Wednesday, October 26th, 2016
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   Module to store globally accessible 
                            values and states for the game.
@@ -11,11 +11,10 @@
 module config {
     export class Scene {
         public static MENU : number = 0;
-        public static NODE1 : number = 1;
-        public static NODE2 : number = 2;
-        public static NODE3 : number = 3;
-        public static INSTRUCTIONS : number = 4;
-        public static OVER : number = 5;
+        public static INSTRUCTIONS : number = 1;
+        public static NODE1 : number = 2;
+        public static GAME : number = 3;
+        public static OVER : number = 4;
     }
 
     export class Screen {

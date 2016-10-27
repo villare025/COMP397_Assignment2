@@ -3,7 +3,7 @@
     File Name:             Core Game - TS|JS File
     Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino
-    Last Modified Date:    Sunday, October 16th, 2016
+    Last Modified Date:    Wednesday, October 26th, 2016
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's core.
@@ -26,8 +26,6 @@ var assetData = [
     { id: "Switch", src: "../../Assets/images/btnSwitch.png" },
     { id: "BG_Title", src: "../../Assets/images/bgTitle.jpg" },
     { id: "BG_Node1", src: "../../Assets/images/bgNode1.jpg" },
-    { id: "BG_Node2", src: "../../Assets/images/bgNode2.jpg" },
-    { id: "BG_Node3", src: "../../Assets/images/bgNode3.jpg" },
     { id: "BadEnd", src: "../../Assets/images/btnBadEnd.png" },
     { id: "GoodEnd", src: "../../Assets/images/btnGoodEnd.png" }
 ];

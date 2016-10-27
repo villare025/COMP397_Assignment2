@@ -2,7 +2,7 @@
     File Name:             Scene Node 1 - TS|JS File
     Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino
-    Last Modified Date:    Tuesday, October 4th, 2016
+    Last Modified Date:    Wednesday, October 26th, 2016
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Node 1 scene.

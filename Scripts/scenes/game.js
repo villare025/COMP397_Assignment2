@@ -7,7 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     File Name:             Scene Game - TS|JS File
     Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino
-    Last Modified Date:    Sunday, October 16th, 2016
+    Last Modified Date:    Wednesday, October 26th, 2016
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.

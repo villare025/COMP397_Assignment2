@@ -8,9 +8,7 @@
 /// <reference path="../objects/scene.ts" />
 
 /// <reference path="../scenes/menu.ts" />
+/// <reference path="../scenes/instructions.ts" />
 /// <reference path="../scenes/node1.ts" />
-/// <reference path="../scenes/node2.ts" />
-/// <reference path="../scenes/node3.ts" />
-/// <reference path="../scenes/preface.ts" />
 /// <reference path="../scenes/game.ts" />
 /// <reference path="../scenes/gameover.ts" />

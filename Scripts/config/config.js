@@ -2,7 +2,7 @@
     File Name:             Config - TS|JS File
     Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino
-    Last Modified Date:    Sunday, October 16th, 2016
+    Last Modified Date:    Wednesday, October 26th, 2016
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   Module to store globally accessible
                            values and states for the game.
@@ -14,11 +14,10 @@ var config;
         function Scene() {
         }
         Scene.MENU = 0;
-        Scene.NODE1 = 1;
-        Scene.NODE2 = 2;
-        Scene.NODE3 = 3;
-        Scene.INSTRUCTIONS = 4;
-        Scene.OVER = 5;
+        Scene.INSTRUCTIONS = 1;
+        Scene.NODE1 = 2;
+        Scene.GAME = 3;
+        Scene.OVER = 4;
         return Scene;
     }());
     config.Scene = Scene;
