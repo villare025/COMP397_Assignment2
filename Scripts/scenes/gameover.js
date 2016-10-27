@@ -6,7 +6,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Clean and Comment Code
+    Revision History:      Label Placement
 */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -27,11 +27,11 @@ var scenes;
             console.log("Game scene started");
             this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
             this.addChild(this._bg);
-            this._score = new objects.Label("Score: " + globalScore.toString(), "30px Special Elite", "#FFF", 50, 200);
+            this._score = new objects.Label("Score: " + globalScore.toString(), "30px Special Elite", "#FFF", 125, 200);
             this.addChild(this._score);
-            this._scorePrevious = new objects.Label("Previous High Score: ", "30px Special Elite", "#FFF", 50, 300);
+            this._scorePrevious = new objects.Label("Previous High Score: ", "30px Special Elite", "#FFF", 205, 300);
             this.addChild(this._scorePrevious);
-            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Special Elite", "#FFF", 50, 350);
+            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Special Elite", "#FFF", 190, 350);
             this.addChild(this._scoreNow);
             this._checkHighScore();
             // Add GAME OVER scene to main stage container. 
