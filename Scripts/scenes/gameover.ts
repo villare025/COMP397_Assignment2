@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Add localStorage
+    Revision History:      Use Special Elite Google Font
 */
 
 module scenes {
@@ -31,13 +31,13 @@ module scenes {
             this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
             this.addChild(this._bg);
 
-            this._score = new objects.Label("Score: " + globalScore.toString(), "30px Arial", "#FFF", 50, 200);
+            this._score = new objects.Label("Score: " + globalScore.toString(), "30px Special Elite", "#FFF", 50, 200);
             this.addChild(this._score);
 
-            this._scorePrevious = new objects.Label("Previous High Score: ", "30px Arial", "#FFF", 50, 300);
+            this._scorePrevious = new objects.Label("Previous High Score: ", "30px Special Elite", "#FFF", 50, 300);
             this.addChild(this._scorePrevious);
 
-            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Arial", "#FFF", 50, 350);
+            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Special Elite", "#FFF", 50, 350);
             this.addChild(this._scoreNow);
 
             this._checkHighScore();

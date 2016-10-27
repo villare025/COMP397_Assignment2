@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Use Game scene instead of Node1 to render Hangman
+    Revision History:      Use Special Elite Google Font
 */
 module scenes {
     export class Game extends objects.Scene {
@@ -50,16 +50,16 @@ module scenes {
             this._bg = new createjs.Bitmap(assets.getResult("BG_HangM"));
             this.addChild(this._bg);
             
-            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "20px Arial", "#000", 50, 50);
+            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "20px Special Elite", "#000", 50, 50);
             this.addChild(this._scoreGO);
 
-            this._clueTxtGO = new objects.Label("Clue: " + this._chosenClue, "20px Arial", "#000", 50, 175);
+            this._clueTxtGO = new objects.Label("Clue: " + this._chosenClue, "20px Special Elite", "#000", 50, 175);
             this.addChild(this._clueTxtGO);
 
-            this._categoryTxtGO = new objects.Label("Category: " + this._chosenCat, "20px Arial", "#000", 50, 250);
+            this._categoryTxtGO = new objects.Label("Category: " + this._chosenCat, "20px Special Elite", "#000", 50, 250);
             this.addChild(this._categoryTxtGO);
 
-            this._previousGuessesGO = new objects.Label("Previous Guesses: ", "20px Arial", "#000", 50, 300);
+            this._previousGuessesGO = new objects.Label("Previous Guesses: ", "20px Special Elite", "#000", 50, 300);
             this.addChild(this._previousGuessesGO);
 
             this._next = new objects.Button("BTN_Next", 475, 400);
@@ -220,7 +220,7 @@ module scenes {
                     if (currentWordArray[i] == this._currentAnswerArray[j]) {
                         currentScene.removeChild(this._placeholders[i]);
                         var letterToShow = new objects.Label(
-                            currentWordArray[i], "20px Arial", "#000", 150 + i * 30, 110
+                            currentWordArray[i], "20px Special Elite", "#000", 150 + i * 30, 110
                         );
                         this._lettersToShow.push(letterToShow);
                         this.addChild(letterToShow);
