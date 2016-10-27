@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Use Special Elite Google Font
+    Revision History:      Clean and Comment Code
 */
 
 module scenes {
@@ -42,7 +42,7 @@ module scenes {
 
             this._checkHighScore();
 
-            // Add gamescene to main stage container. 
+            // Add GAME OVER scene to main stage container. 
             stage.addChild(this);
         }
 

@@ -6,7 +6,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Menu scene.
-    Revision History:      Switch NODE1 to GAME Scene
+    Revision History:      Clean and Comment Code
 */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -31,15 +31,15 @@ var scenes;
             // Create BG for scene and add to Game Scene container
             this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
             this.addChild(this._bg);
-            // Add START Button to scene. Register for click callback function
+            // Add PLAY/START Button to scene. Register for click callback function
             this._menuBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X - 185, config.Screen.CENTER_Y + 85);
             this.addChild(this._menuBtnStart);
             this._menuBtnStart.on("click", this._startButtonClick, this);
-            // Add instructions Button to scene. Register for click callback function
+            // Add INSTRUCTIONS Button to scene. Register for click callback function
             this._menuBtnInstructions = new objects.Button("BTN_Inst", config.Screen.CENTER_X + 145, config.Screen.CENTER_Y + 85);
             this.addChild(this._menuBtnInstructions);
             this._menuBtnInstructions.on("click", this._instructionsButtonClick, this);
-            // Add menu scene to global stage container
+            // Add MENU scene to main stage container.
             stage.addChild(this);
         };
         // Run on every tick

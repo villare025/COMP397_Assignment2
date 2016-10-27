@@ -7,7 +7,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's core.
-    Revision History:      Added Hangman Vars
+    Revision History:      Clean Code
 */
 // Global Variables
 var assets;
@@ -104,11 +104,11 @@ function isLocalStorageWorking() {
 // Show if localStorage works 
 if (isLocalStorageWorking()) {
     // Working = YES
-    document.getElementById("localStorageCheck").style.backgroundColor = "#00FF00";
+    document.getElementById("localStorageCheck").style.color = "#00FF00";
 }
 else {
     // Working = NO 
-    document.getElementById("localStorageCheck").style.backgroundColor = "#FF0000";
+    document.getElementById("localStorageCheck").style.color = "#FF0000";
     // So Create Fake localStorage var to not Throw Error
     localStorage = [];
 }

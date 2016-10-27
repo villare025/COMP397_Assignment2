@@ -6,7 +6,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Instructions scene.
-    Revision History:      Switch NODE1 to GAME Scene
+    Revision History:      Clean and Comment Code
 */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -28,29 +28,30 @@ var scenes;
             // Create BG for scene and add to Game Scene container
             this._bg = new createjs.Bitmap(assets.getResult("BG_Instr"));
             this.addChild(this._bg);
-            // Add START Button to scene. Register for click callback function
+            // Add PLAY/START Button to scene. Register for click callback function
             this._instructionsBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X + 150, config.Screen.CENTER_Y + 160);
             this.addChild(this._instructionsBtnStart);
             this._instructionsBtnStart.on("click", this._startButtonClick, this);
-            // Create RETURN Button for scene and add to Game Scene container. Register for onclick event
+            // Create BACK Button for scene and add to Game Scene container. Register for onclick event
             this._instructionsBtnBack = new objects.Button("BTN_Back", config.Screen.CENTER_X - 190, config.Screen.CENTER_Y + 160);
             this.addChild(this._instructionsBtnBack);
             this._instructionsBtnBack.on("click", this._onBackButtonClick, this);
-            // Add gamescene to main stage container. 
+            // Add INSTRUCTIIONS to main stage container. 
             stage.addChild(this);
         };
         // Run on every tick
         Instructions.prototype.update = function () {
             // Update objects
         };
-        // Function for when button is pressed
+        // Function for when PLAY/START button is pressed
         Instructions.prototype._startButtonClick = function (event) {
             // Change global scene variable to GAME. Call global changeScene() function
             scene = config.Scene.GAME;
             changeScene();
         };
+        // Function for when BACK button is pressed
         Instructions.prototype._onBackButtonClick = function (event) {
-            // Set global variable to NODE1 Scene and call changescene function
+            // Set global variable to MENU Scene and call changescene function
             scene = config.Scene.MENU;
             changeScene();
         };

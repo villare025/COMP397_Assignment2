@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Use Special Elite Google Font
+    Revision History:      Clean and Comment Code
 */
 var scenes;
 (function (scenes) {
@@ -27,6 +27,7 @@ var scenes;
             window.onkeyup = this._handleKeyUp;
         }
         Game.prototype.start = function () {
+            // Initialize Game Values
             waitingForNext = false;
             totalWrong = 0;
             totalCorrect = 0;
@@ -34,36 +35,51 @@ var scenes;
             globalScore = 0;
             this._placeholders = [];
             this._lettersToShow = [];
+            // Start the Words!
             this._prepareWordBank();
+            // Create BG for scene and add to Game Scene container
             this._bg = new createjs.Bitmap(assets.getResult("BG_HangM"));
             this.addChild(this._bg);
-            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "20px Special Elite", "#000", 50, 50);
+            // Add SCORE Label to scene.
+            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "20px Special Elite", "#000", config.Screen.CENTER_X - 225, 50);
             this.addChild(this._scoreGO);
-            this._clueTxtGO = new objects.Label("Clue: " + this._chosenClue, "20px Special Elite", "#000", 50, 175);
+            // Add CLUE Label to scene.
+            this._clueTxtGO = new objects.Label("Clue: " + this._chosenClue, "20px Special Elite", "#000", 125, 175);
             this.addChild(this._clueTxtGO);
-            this._categoryTxtGO = new objects.Label("Category: " + this._chosenCat, "20px Special Elite", "#000", 50, 250);
+            // Add CATEGORY Label to scene.
+            this._categoryTxtGO = new objects.Label("Category: " + this._chosenCat, "20px Special Elite", "#000", 142, 250);
             this.addChild(this._categoryTxtGO);
-            this._previousGuessesGO = new objects.Label("Previous Guesses: ", "20px Special Elite", "#000", 50, 300);
+            // Add PREVIOUS GUESSES Label to scene.
+            this._previousGuessesGO = new objects.Label("Previous Guesses: ", "20px Special Elite", "#000", 135, 300);
             this.addChild(this._previousGuessesGO);
+            // Add NEXT Button to scene. Register for click callback function
             this._next = new objects.Button("BTN_Next", 475, 400);
             this._next.on("click", this._nextBtnClick, this);
+            // Get THE Word!
             this._getWord();
+            // Add GAME scene to main stage container. 
             stage.addChild(this);
         };
+        // Run on every tick
         Game.prototype.update = function () {
             var _this = this;
+            // Check Letter on each Key Pressed 
             if (keyPressed)
                 this._checkLetter();
+            // Add player's already guessed letters
             this._previousGuessesGO.text = "Previous Guesses: ";
             previousGuesses.forEach(function (element) {
                 _this._previousGuessesGO.text += element + ", ";
             });
+            // Update Score
             this._scoreGO.text = "Score: " + globalScore.toString();
         };
+        // Function for when NEXT button is pressed
         Game.prototype._nextBtnClick = function (event) {
             currentScene.removeChild(this._next);
             this._getWord();
         };
+        // Function for setting up the WORDS for the game
         Game.prototype._prepareWordBank = function () {
             this._wordBank = [,];
             var guessMeArray = [
@@ -77,91 +93,112 @@ var scenes;
                 this._wordBank[i][1] = guessMeArray[i].clue;
                 this._wordBank[i][2] = guessMeArray[i].category;
             }
-            console.log(this._wordBank);
+            // Check if wordbank is correct
+            //console.log(this._wordBank);
         };
+        // Function for Checking the letter input by the player
         Game.prototype._checkLetter = function () {
             if (waitingForNext)
                 return;
-            console.log("wrongAnswers counter : " + wrongAnswers);
+            //console.log("wrongAnswers counter : " + wrongAnswers);
             keyPressed = false;
-            var found = false;
+            var isInWord = false;
             var previouslyEntered = false;
             for (var i = 0; i < previousGuesses.length; i++) {
                 if (keyToPass == previousGuesses[i]) {
                     previouslyEntered = true;
                 }
             }
+            // If letter is not entered yet
             if (!previouslyEntered) {
                 previousGuesses.push(keyToPass);
                 for (i = 0; i < currentWordArray.length; i++) {
                     if (keyToPass == currentWordArray[i]) {
-                        found = true;
+                        isInWord = true;
                         this._currentAnswerArray.push(keyToPass);
                     }
                 }
-                if (found) {
-                    this._checkAnswer();
+                // If letter is in the word
+                if (isInWord) {
+                    this._correctAnswer();
                 }
                 else {
                     this._wrongAnswer();
                 }
             }
         };
+        // Function for Handling the Pressed Key Event
         Game.prototype._handleKeyUp = function (event) {
             if (event.keyCode > 64 && event.keyCode < 91) {
                 var input = String.fromCharCode(event.keyCode).toLowerCase();
-                console.log(input);
-                //passing to global space, so we can handler keys here
+                //console.log(input);
+                // Pass to global space, so we can handle keys here
                 keyPressed = true;
                 keyToPass = input;
             }
         };
-        Game.prototype._checkAnswer = function () {
-            console.log("Correct: " + keyToPass);
-            console.log(this._currentAnswerArray);
+        // Function for Checking the Player's Answer
+        Game.prototype._correctAnswer = function () {
+            //console.log("Correct: " + keyToPass);
+            //console.log(this._currentAnswerArray);
             this._updatePlaceholders();
             var currentAnswer = "";
-            for (var i = 0; i < this._chosenWord.length; i++) {
-            }
+            // If word and answer array length match player successfully guessed the word
             if (this._currentAnswerArray.length == currentWordArray.length) {
+                // Update Player Wins && Score
                 totalCorrect++;
                 globalScore = globalScore + 100;
-                console.log(globalScore);
+                //console.log(globalScore);
+                // Add Next Button
                 this.addChild(this._next);
                 waitingForNext = true;
             }
             ;
         };
+        // Function for Wrong Letter Guess
         Game.prototype._wrongAnswer = function () {
             wrongAnswers++;
-            if (wrongAnswers == 6) {
+            // If wrong answer == 5 player loses
+            if (wrongAnswers == 5) {
+                // Update Player Loses & Score
                 totalWrong++;
+                // Add Next Button
                 this.addChild(this._next);
                 wrongAnswers = 0;
                 waitingForNext = true;
             }
         };
+        // Function for Getting the Word to Play/Guess
         Game.prototype._getWord = function () {
+            // Initialize game play
             waitingForNext = false;
             previousGuesses = [];
             this._currentAnswerArray = [];
+            // If there are no more words for the player to Guess, game ends
             if (this._wordBank.length == 0) {
                 waitingForNext = true;
+                // Change global scene variable to game OVER
+                // Call global changeScene() function
                 scene = config.Scene.OVER;
                 changeScene();
                 return;
             }
+            // Randomly Select the Word
             var rand = Math.floor(Math.random() * this._wordBank.length);
             this._chosenWord = this._wordBank[rand][0];
             this._chosenClue = this._wordBank[rand][1];
             this._chosenCat = this._wordBank[rand][2];
             this._wordBank.splice(rand, 1);
             currentWordArray = this._chosenWord.split("");
-            console.log(this._chosenWord);
+            // Cheat and View the Word
+            //console.log(this._chosenWord);
+            // Show the clue, category, placeholders (no. of black squares) to help player guess the word
             this._clueTxtGO.text = "Clue: " + this._chosenClue;
             this._categoryTxtGO.text = "Category: " + this._chosenCat;
             this._createPlaceholders();
         };
+        // Function for Creating the Black Placeholders 
+        // - to show how many letters user has to guess and number of letters in the word
         Game.prototype._createPlaceholders = function () {
             // Clean Previous Values
             if (this._placeholders != undefined) {
@@ -174,6 +211,7 @@ var scenes;
                 this._lettersToShow = [];
                 this._placeholders = [];
             }
+            // Create the number of rectangles for each letter in the word 
             for (var i = 0; i < this._chosenWord.length; i++) {
                 var ph = new createjs.Shape();
                 ph.graphics.beginFill("#000").drawRect(150 + i * 30, 110, 20, 30);
@@ -181,6 +219,7 @@ var scenes;
                 this.addChild(ph);
             }
         };
+        // Function for Updating the Black Placeholders to actual letters
         Game.prototype._updatePlaceholders = function () {
             for (var i = 0; i < currentWordArray.length; i++) {
                 console.log(this._currentAnswerArray.length);
