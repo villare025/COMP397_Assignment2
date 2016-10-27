@@ -41,7 +41,6 @@ var assetData: objects.Asset[] = [
     { id: "BG_Title", src: "../../Assets/images/bgTitle.png" },
     { id: "BG_Instr", src: "../../Assets/images/bgInstructions.png" },
     { id: "BG_HangM", src: "../../Assets/images/bgGame.png" },
-    { id: "BG_GOver", src: "../../Assets/images/btnGoodEnd.png" },
     { id: "BTN_Play", src: "../../Assets/images/btnPlay.png" },
     { id: "BTN_Inst", src: "../../Assets/images/btnInstructions.png" },
     { id: "BTN_Next", src: "../../Assets/images/btnNext.png" },
