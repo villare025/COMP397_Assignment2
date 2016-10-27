@@ -90,6 +90,11 @@ function changeScene() {
             currentScene = new scenes.Game();
             console.log("Starting Game scene");
             break;
+        case config.Scene.OVER:
+            stage.removeAllChildren();
+            currentScene = new scenes.Gameover();
+            console.log("Starting Game OVER scene");
+            break;
     }
 }
 //# sourceMappingURL=game.js.map

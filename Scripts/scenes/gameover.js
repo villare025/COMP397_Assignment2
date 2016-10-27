@@ -6,7 +6,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Initial Commit
+    Revision History:      Make Game Over Scene Work
 */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -21,28 +21,23 @@ var scenes;
         function Gameover() {
             _super.call(this);
         }
-        // Run when the scene is started
+        // PUBLIC FUNCTIONS
         Gameover.prototype.start = function () {
             // Add objects to the scene
-            console.log("Node 1 scene started");
-            // Create BG for scene and add to Game Scene container
-            this._bg = new createjs.Bitmap(assets.getResult("BG"));
+            console.log("Game scene started");
+            this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
             this.addChild(this._bg);
-            // Create button for scene and add to Game Scene container. Register for onclick event
-            this._gameButton = new objects.Button("Back", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180);
-            this.addChild(this._gameButton);
-            this._gameButton.on("click", this._onBackButtonClick, this);
+            this._score = new objects.Label("Score: " + globalScore.toString(), "30px Arial", "#FFF", 50, 200);
+            this.addChild(this._score);
+            this._scorePrevious = new objects.Label("Previous High Score: ", "30px Arial", "#FFF", 50, 300);
+            this.addChild(this._scorePrevious);
+            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Arial", "#FFF", 50, 350);
+            this.addChild(this._scoreNow);
             // Add gamescene to main stage container. 
             stage.addChild(this);
         };
-        // Run on every tick
         Gameover.prototype.update = function () {
             // Update objects
-        };
-        Gameover.prototype._onBackButtonClick = function (event) {
-            // Set global variable to Menu Scene and call changescene function
-            scene = config.Scene.MENU;
-            changeScene();
         };
         return Gameover;
     }(objects.Scene));

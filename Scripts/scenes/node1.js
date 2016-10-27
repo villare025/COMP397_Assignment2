@@ -147,7 +147,7 @@ var scenes;
             this._currentAnswerArray = [];
             if (this._wordBank.length == 0) {
                 waitingForNext = true;
-                scene = config.Scene.GAME;
+                scene = config.Scene.OVER;
                 changeScene();
                 return;
             }

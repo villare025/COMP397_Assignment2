@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Initial Commit
+    Revision History:      Make Game Over Scene Work
 */
 
 module scenes {
@@ -14,40 +14,38 @@ module scenes {
 
         // PRIVATE VARIABLES
         private _bg: createjs.Bitmap;
-        private _gameButton: objects.Button;
+        private _score: objects.Label;
+        private _scorePrevious: objects.Label;
+        private _scoreNow: objects.Label;
 
         // CONSTRUCTOR
         constructor() {
             super();
         }
 
-        // Run when the scene is started
+        // PUBLIC FUNCTIONS
         public start(): void {
             // Add objects to the scene
-            console.log("Node 1 scene started");
+            console.log("Game scene started");
 
-            // Create BG for scene and add to Game Scene container
-            this._bg = new createjs.Bitmap(assets.getResult("BG"));
+            this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
             this.addChild(this._bg);
 
-            // Create button for scene and add to Game Scene container. Register for onclick event
-            this._gameButton = new objects.Button("Back", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180);
-            this.addChild(this._gameButton);
-            this._gameButton.on("click", this._onBackButtonClick, this);
+            this._score = new objects.Label("Score: " + globalScore.toString(), "30px Arial", "#FFF", 50, 200);
+            this.addChild(this._score);
+
+            this._scorePrevious = new objects.Label("Previous High Score: ", "30px Arial", "#FFF", 50, 300);
+            this.addChild(this._scorePrevious);
+
+            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Arial", "#FFF", 50, 350);
+            this.addChild(this._scoreNow);
 
             // Add gamescene to main stage container. 
             stage.addChild(this);
         }
 
-        // Run on every tick
         public update(): void {
             // Update objects
-        }
-
-        private _onBackButtonClick(event: createjs.MouseEvent) {
-            // Set global variable to Menu Scene and call changescene function
-            scene = config.Scene.MENU;
-            changeScene();
         }
     }
 }
