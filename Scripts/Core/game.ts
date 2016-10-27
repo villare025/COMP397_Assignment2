@@ -94,17 +94,12 @@ function changeScene(): void {
         case config.Scene.INSTRUCTIONS:
             stage.removeAllChildren();
             currentScene = new scenes.Instructions();
-            console.log("Starting Instructions scene");
-            break;
-        case config.Scene.NODE1:
-            stage.removeAllChildren();
-            currentScene = new scenes.Node1();
-            console.log("Starting NODE1 scene");
+            console.log("Starting INSTRUCTIONS scene");
             break;
         case config.Scene.GAME:
             stage.removeAllChildren();
             currentScene = new scenes.Game();
-            console.log("Starting Game scene");
+            console.log("Starting GAME scene");
             break;
         case config.Scene.OVER:
             stage.removeAllChildren();

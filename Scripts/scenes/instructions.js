@@ -6,7 +6,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's Instructions scene.
-    Revision History:      Make Instruction Scene Work
+    Revision History:      Switch NODE1 to GAME Scene
 */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -46,7 +46,7 @@ var scenes;
         // Function for when button is pressed
         Instructions.prototype._startButtonClick = function (event) {
             // Change global scene variable to GAME. Call global changeScene() function
-            scene = config.Scene.NODE1;
+            scene = config.Scene.GAME;
             changeScene();
         };
         Instructions.prototype._onBackButtonClick = function (event) {

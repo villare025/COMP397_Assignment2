@@ -6,15 +6,14 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   Module to store globally accessible 
                            values and states for the game.
-    Revision History:      Initial Commit
+    Revision History:      Remove NODE1 Scene
 */
 module config {
     export class Scene {
         public static MENU : number = 0;
         public static INSTRUCTIONS : number = 1;
-        public static NODE1 : number = 2;
-        public static GAME : number = 3;
-        public static OVER : number = 4;
+        public static GAME : number = 2;
+        public static OVER : number = 3;
     }
 
     export class Screen {

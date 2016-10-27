@@ -6,7 +6,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   Module to store globally accessible
                            values and states for the game.
-    Revision History:      Initial Commit
+    Revision History:      Remove NODE1 Scene
 */
 var config;
 (function (config) {
@@ -15,9 +15,8 @@ var config;
         }
         Scene.MENU = 0;
         Scene.INSTRUCTIONS = 1;
-        Scene.NODE1 = 2;
-        Scene.GAME = 3;
-        Scene.OVER = 4;
+        Scene.GAME = 2;
+        Scene.OVER = 3;
         return Scene;
     }());
     config.Scene = Scene;

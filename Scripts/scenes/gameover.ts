@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Make Game Over Scene Work
+    Revision History:      Add localStorage
 */
 
 module scenes {

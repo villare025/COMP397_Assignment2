@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that 
                            are required to render the game's Menu scene.
-    Revision History:      Initial Commit
+    Revision History:      Switch NODE1 to GAME Scene
 */
 
 module scenes {
@@ -57,7 +57,7 @@ module scenes {
         // Function for when PLAY/START button is pressed
         private _startButtonClick(event: createjs.MouseEvent) {
             // Change global scene variable to GAME. Call global changeScene() function
-            scene = config.Scene.NODE1;
+            scene = config.Scene.GAME;
             changeScene();
         }
         // Function for when INSTRUCTION button is pressed
