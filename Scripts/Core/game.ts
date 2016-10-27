@@ -7,7 +7,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that 
                            are required to render the game's core.
-    Revision History:      Clean Code
+    Revision History:      Add Music
 */
 
 // Global Variables
@@ -38,6 +38,7 @@ var waitingForNext: boolean = false;
 
 // Preload Assets required
 var assetData: objects.Asset[] = [
+    { id: "MUSE_GAME", src: "../../Assets/audio/P3-TartarusThebelBlock.mp3" },
     { id: "BG_Title", src: "../../Assets/images/bgTitle.png" },
     { id: "BG_Instr", src: "../../Assets/images/bgInstructions.png" },
     { id: "BG_HangM", src: "../../Assets/images/bgGame.png" },
@@ -70,6 +71,11 @@ function init() {
     // Set FPS for game and register for "tick" callback function
     createjs.Ticker.setFPS(config.Game.FPS);
     createjs.Ticker.on("tick", this.gameLoop, this);
+
+    // Add and Play Game Music
+    createjs.Sound.stop();
+    var bgAll = createjs.Sound.play("MUSE_GAME");
+    bgAll.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1 });
 
     // Set initial scene to MENU scene and call changeScene().
     scene = config.Scene.MENU;
