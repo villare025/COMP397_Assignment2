@@ -83,9 +83,21 @@ var scenes;
         Game.prototype._prepareWordBank = function () {
             this._wordBank = [,];
             var guessMeArray = [
-                { word: "strawberry", clue: "There are 200 seeds in this red fruit", category: "Food" },
-                { word: "sugar", clue: "Humans are born craving this taste", category: "Food" },
-                { word: "wine", clue: "When drunk regularly it can actually \nhelp you boost your sex drive", category: "Beverage" },
+                { word: "strawberry", clue: "There are 200 seeds in this red fruit.", category: "Food" },
+                { word: "sugar", clue: "Humans are born craving this taste.", category: "Food" },
+                { word: "wine", clue: "When drunk regularly it can actually \nhelp you boost your sex drive.", category: "Beverage" },
+                { word: "fovglove", clue: "Getting a growth spurt in our \nimagination leading to new ideas.", category: "Flower Symbolism and Superstitions" },
+                { word: "bluebell", clue: "Ring to call the fairies! \nBut if you hear it ring, \nsomeone close to you will die.", category: "Flower Symbolism and Superstitions" },
+                { word: "persephone", clue: "Goddess of the Underworld.", category: "Gods and Goddesses" },
+                { word: "styx", clue: "The famous river between \nEarth and the Underworld; \nremember to seek passage from the ferryman Charon.", category: "Gods and Goddesses" },
+                { word: "dryads", clue: "Tree-dwelling, playful, female creatures.", category: "Creatures" },
+                { word: "toothfairy", clue: "She is a kindly creature who \nkeeps a tooth collection.", category: "Creatures" },
+                { word: "smaug", clue: "A powerful, fearsome black dragon who \nterrorizes the people of Dale, \nLake-town and the Dwarves of Erebor.", category: "Creatures" },
+                { word: "paarthurnax", clue: "A wise old dragon met at the Throat of the World. \nAlso the master of the Greybeards, \nand their Way of the Voice.", category: "Creatures" },
+                { word: "alduin", clue: "The people of Skyrim know him as \n'The World Eater' or \n'Nordic God of Destruction.'", category: "Creatures" },
+                { word: "nutella", clue: "The brand name of a \nsweetened hazelnut cocoa spread.", category: "Food" },
+                { word: "angelstrumpet", clue: "If it's fragrant during the daytime, \nit means that someone nearby you has died. \nUnder the influence of this scent, \nyou may see his or her ghost.", category: "Flower Symbolism and Superstitions" },
+                { word: "yellowjessamine", clue: "The flower's powerful symbolism \nmeans to enhance positive \naffection, friendship, joy and intellect.", category: "Flower Symbolism and Superstitions" }
             ];
             for (var i = 0; i < guessMeArray.length; i++) {
                 this._wordBank[i] = [];
