@@ -97,4 +97,24 @@ function changeScene() {
             break;
     }
 }
+// Check for Local Storage
+function isLocalStorageWorking() {
+    try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+    }
+    catch (e) {
+        return false;
+    }
+}
+// Show if localStorage works 
+if (isLocalStorageWorking()) {
+    // Working = YES
+    document.getElementById("localStorageCheck").style.backgroundColor = "#00FF00";
+}
+else {
+    // Working = NO 
+    document.getElementById("localStorageCheck").style.backgroundColor = "#FF0000";
+    // So Create Fake localStorage var to not Throw Error
+    localStorage = [];
+}
 //# sourceMappingURL=game.js.map

@@ -40,12 +40,36 @@ module scenes {
             this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Arial", "#FFF", 50, 350);
             this.addChild(this._scoreNow);
 
+            this._checkHighScore();
+
             // Add gamescene to main stage container. 
             stage.addChild(this);
         }
 
         public update(): void {
             // Update objects
+        }
+
+        private _checkHighScore() {
+            console.log("Correct: " + totalCorrect);
+            console.log("Wrong: " + totalWrong);
+            var localHS = localStorage.getItem("HighScore");
+            var nLocal = Number(localHS);
+            this._scorePrevious.text = "Previous High Score: " + localHS;
+
+            if (localStorage.getItem("HighScore") === null) {
+                localStorage.setItem("HighScore", globalScore.toString());
+                this._scorePrevious.text = "";
+                this._score.text = "You have set the highscore \nand finished all the words \nin the game!";
+            } else {
+                if (globalScore >= nLocal) {
+                    localStorage.setItem("HighScore", globalScore.toString());
+                    this._score.text = "You have beaten the highscore \nand finished all the words \nin the game!";
+                }
+                else {
+                    this._score.text = "You have not beaten the highscore \nbut finished all the words \nin the game!";
+                }
+            }
         }
     }
 }
