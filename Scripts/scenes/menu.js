@@ -32,17 +32,13 @@ var scenes;
             this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
             this.addChild(this._bg);
             // Add START Button to scene. Register for click callback function
-            this._menuBtnStart = new objects.Button("Start", config.Screen.CENTER_X + 135, config.Screen.CENTER_Y + 72);
+            this._menuBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X - 185, config.Screen.CENTER_Y + 85);
             this.addChild(this._menuBtnStart);
             this._menuBtnStart.on("click", this._startButtonClick, this);
             // Add instructions Button to scene. Register for click callback function
-            this._menuBtnInstructions = new objects.Button("Instructions", config.Screen.CENTER_X + 135, config.Screen.CENTER_Y + 155);
+            this._menuBtnInstructions = new objects.Button("BTN_Inst", config.Screen.CENTER_X + 145, config.Screen.CENTER_Y + 85);
             this.addChild(this._menuBtnInstructions);
             this._menuBtnInstructions.on("click", this._instructionsButtonClick, this);
-            // Add TITLE Label to scene and add to Game Scene container 
-            this._menuLabel = new objects.Label("The\nTruth's\nWay", "bold 60px Kaushan Script", "#00008B", config.Screen.CENTER_X + 250, config.Screen.CENTER_Y - 120);
-            this._menuLabel.textAlign = "center";
-            this.addChild(this._menuLabel);
             // Add menu scene to global stage container
             stage.addChild(this);
         };
@@ -50,19 +46,16 @@ var scenes;
         Menu.prototype.update = function () {
             // Update objects
         };
-        // Function for when button is pressed
+        // Function for when PLAY/START button is pressed
         Menu.prototype._startButtonClick = function (event) {
             // Change global scene variable to GAME. Call global changeScene() function
             scene = config.Scene.NODE1;
             changeScene();
         };
+        // Function for when INSTRUCTION button is pressed
         Menu.prototype._instructionsButtonClick = function (event) {
-            // Change global scene variable to GAME. Call global changeScene() function
+            // Change global scene variable to INSTRUCTIONS. Call global changeScene() function
             scene = config.Scene.INSTRUCTIONS;
-            changeScene();
-        };
-        Menu.prototype._overButtonClick = function (event) {
-            scene = config.Scene.OVER;
             changeScene();
         };
         return Menu;

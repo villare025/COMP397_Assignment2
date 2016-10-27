@@ -16,7 +16,6 @@ module scenes {
         private _bg: createjs.Bitmap;
         private _menuBtnStart: objects.Button;
         private _menuBtnInstructions: objects.Button;
-        private _menuLabel: objects.Label;
 
         // Menu Class Contructor
         constructor() {
@@ -32,24 +31,19 @@ module scenes {
             //var bgAll = createjs.Sound.play("MUSIC_All");
             //bgAll.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1 });
 
-             // Create BG for scene and add to Game Scene container
+            // Create BG for scene and add to Game Scene container
             this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
             this.addChild(this._bg);
 
             // Add START Button to scene. Register for click callback function
-            this._menuBtnStart = new objects.Button("Start", config.Screen.CENTER_X + 135, config.Screen.CENTER_Y + 72);
+            this._menuBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X - 185, config.Screen.CENTER_Y + 85);
             this.addChild(this._menuBtnStart);
             this._menuBtnStart.on("click", this._startButtonClick, this);
-            
+
             // Add instructions Button to scene. Register for click callback function
-            this._menuBtnInstructions = new objects.Button("Instructions", config.Screen.CENTER_X + 135, config.Screen.CENTER_Y + 155);
+            this._menuBtnInstructions = new objects.Button("BTN_Inst", config.Screen.CENTER_X + 145, config.Screen.CENTER_Y + 85);
             this.addChild(this._menuBtnInstructions);
             this._menuBtnInstructions.on("click", this._instructionsButtonClick, this);
-
-            // Add TITLE Label to scene and add to Game Scene container 
-            this._menuLabel = new objects.Label("The\nTruth's\nWay", "bold 60px Kaushan Script", "#00008B", config.Screen.CENTER_X + 250, config.Screen.CENTER_Y - 120);
-            this._menuLabel.textAlign = "center";
-            this.addChild(this._menuLabel); 
 
             // Add menu scene to global stage container
             stage.addChild(this);
@@ -60,19 +54,16 @@ module scenes {
             // Update objects
         }
 
-        // Function for when button is pressed
+        // Function for when PLAY/START button is pressed
         private _startButtonClick(event: createjs.MouseEvent) {
             // Change global scene variable to GAME. Call global changeScene() function
             scene = config.Scene.NODE1;
             changeScene();
         }
+        // Function for when INSTRUCTION button is pressed
         private _instructionsButtonClick(event: createjs.MouseEvent) {
-            // Change global scene variable to GAME. Call global changeScene() function
+            // Change global scene variable to INSTRUCTIONS. Call global changeScene() function
             scene = config.Scene.INSTRUCTIONS;
-            changeScene();
-        }
-        private _overButtonClick(event: createjs.MouseEvent) {
-            scene = config.Scene.OVER;
             changeScene();
         }
     }

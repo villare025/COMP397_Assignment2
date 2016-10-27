@@ -7,7 +7,7 @@
     Website Name:          EV - COMP397 - Assignment 2
     Program Description:   JS file that contains the components that
                            are required to render the game's core.
-    Revision History:      Initial Commit
+    Revision History:      Added Hangman Vars
 */
 // Global Variables
 var assets;
@@ -18,16 +18,27 @@ var scene;
 // Game scenes
 var menuScene;
 var gameScene;
+// Set the HANGMAN variables
+var globalScore = 0;
+var wrongAnswers = 0;
+var rightAnswers = 0;
+var totalCorrect = 0;
+var totalWrong = 0;
+var previousGuesses;
+var currentWordArray;
+var keyPressed = false;
+var keyToPass = "";
+var waitingForNext = false;
 // Preload Assets required
 var assetData = [
-    { id: "Start", src: "../../Assets/images/btnTitleStart.png" },
-    { id: "Preface", src: "../../Assets/images/btnTitlePreface.png" },
-    { id: "Return", src: "../../Assets/images/return.png" },
-    { id: "Switch", src: "../../Assets/images/btnSwitch.png" },
-    { id: "BG_Title", src: "../../Assets/images/bgTitle.jpg" },
-    { id: "BG_Node1", src: "../../Assets/images/bgNode1.jpg" },
-    { id: "BadEnd", src: "../../Assets/images/btnBadEnd.png" },
-    { id: "GoodEnd", src: "../../Assets/images/btnGoodEnd.png" }
+    { id: "BG_Title", src: "../../Assets/images/bgTitle.png" },
+    { id: "BG_Instr", src: "../../Assets/images/bgInstructions.png" },
+    { id: "BG_HangM", src: "../../Assets/images/bgGame.png" },
+    { id: "BG_GOver", src: "../../Assets/images/btnGoodEnd.png" },
+    { id: "BTN_Play", src: "../../Assets/images/btnPlay.png" },
+    { id: "BTN_Inst", src: "../../Assets/images/btnInstructions.png" },
+    { id: "BTN_Next", src: "../../Assets/images/btnNext.png" },
+    { id: "BTN_Back", src: "../../Assets/images/btnBack.png" }
 ];
 function preload() {
     // Create a queue for assets being loaded
@@ -58,7 +69,6 @@ function gameLoop(event) {
     stage.update();
 }
 function changeScene() {
-    // Simple state machine pattern to define scene swapping.
     switch (scene) {
         case config.Scene.MENU:
             stage.removeAllChildren();
@@ -76,20 +86,10 @@ function changeScene() {
             currentScene = new scenes.Node1();
             console.log("Starting NODE1 scene");
             break;
-        case config.Scene.NODE2:
+        case config.Scene.GAME:
             stage.removeAllChildren();
-            currentScene = new scenes.Node2();
-            console.log("Starting NODE2 scene");
-            break;
-        case config.Scene.NODE3:
-            stage.removeAllChildren();
-            currentScene = new scenes.Node3();
-            console.log("Starting NODE3 scene");
-            break;
-        case config.Scene.OVER:
-            stage.removeAllChildren();
-            currentScene = new scenes.Gameover();
-            console.log("Starting GAME OVER scene");
+            currentScene = new scenes.Game();
+            console.log("Starting Game scene");
             break;
     }
 }

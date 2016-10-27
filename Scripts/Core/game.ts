@@ -7,7 +7,7 @@
 	Website Name:          EV - COMP397 - Assignment 2
 	Program Description:   JS file that contains the components that 
                            are required to render the game's core.
-    Revision History:      Initial Commit
+    Revision History:      Added Hangman Vars
 */
 
 // Global Variables
@@ -15,23 +15,37 @@ var assets: createjs.LoadQueue;
 var canvas: HTMLElement;
 var stage: createjs.Stage;
 
-var currentScene : objects.Scene;
+var currentScene: objects.Scene;
 var scene: number;
 
 // Game scenes
-var menuScene : scenes.Menu;
-var gameScene : scenes.Game;
+var menuScene: scenes.Menu;
+var gameScene: scenes.Game;
+
+// Set the HANGMAN variables
+var globalScore: number = 0;
+var wrongAnswers: number = 0;
+var rightAnswers: number = 0;
+var totalCorrect: number = 0;
+var totalWrong: number = 0;
+
+var previousGuesses: string[];
+var currentWordArray: string[];
+
+var keyPressed: boolean = false;
+var keyToPass: string = "";
+var waitingForNext: boolean = false;
 
 // Preload Assets required
-var assetData:objects.Asset[] = [
-    {id: "Start", src:"../../Assets/images/btnTitleStart.png"}, 
-    {id: "Preface", src:"../../Assets/images/btnTitlePreface.png"}, 
-    {id: "Return", src:"../../Assets/images/return.png"},
-    {id: "Switch", src:"../../Assets/images/btnSwitch.png"},
-    {id: "BG_Title", src:"../../Assets/images/bgTitle.jpg"},
-    { id: "BG_Node1", src: "../../Assets/images/bgNode1.jpg" },
-    {id: "BadEnd", src:"../../Assets/images/btnBadEnd.png"},
-    {id: "GoodEnd", src:"../../Assets/images/btnGoodEnd.png"}
+var assetData: objects.Asset[] = [
+    { id: "BG_Title", src: "../../Assets/images/bgTitle.png" },
+    { id: "BG_Instr", src: "../../Assets/images/bgInstructions.png" },
+    { id: "BG_HangM", src: "../../Assets/images/bgGame.png" },
+    { id: "BG_GOver", src: "../../Assets/images/btnGoodEnd.png" },
+    { id: "BTN_Play", src: "../../Assets/images/btnPlay.png" },
+    { id: "BTN_Inst", src: "../../Assets/images/btnInstructions.png" },
+    { id: "BTN_Next", src: "../../Assets/images/btnNext.png" },
+    { id: "BTN_Back", src: "../../Assets/images/btnBack.png" }
 ];
 
 function preload() {
@@ -70,42 +84,29 @@ function gameLoop(event: createjs.Event): void {
     stage.update();
 }
 
-function changeScene() : void {
-    
-    // Simple state machine pattern to define scene swapping.
-    switch(scene)
-    {
-        case config.Scene.MENU :
+function changeScene(): void {
+    switch (scene) {
+        case config.Scene.MENU:
             stage.removeAllChildren();
             menuScene = new scenes.Menu();
             currentScene = menuScene;
             console.log("Starting MENU scene");
             break;
-        case config.Scene.INSTRUCTIONS :
+        case config.Scene.INSTRUCTIONS:
             stage.removeAllChildren();
             currentScene = new scenes.Instructions();
             console.log("Starting Instructions scene");
             break;
-        case config.Scene.NODE1 :
+        case config.Scene.NODE1:
             stage.removeAllChildren();
             currentScene = new scenes.Node1();
             console.log("Starting NODE1 scene");
             break;
-        case config.Scene.NODE2 :
+        case config.Scene.GAME:
             stage.removeAllChildren();
-            currentScene = new scenes.Node2();
-            console.log("Starting NODE2 scene");
-            break;
-        case config.Scene.NODE3 :
-            stage.removeAllChildren();
-            currentScene = new scenes.Node3();
-            console.log("Starting NODE3 scene");
-            break;
-        case config.Scene.OVER :
-            stage.removeAllChildren();
-            currentScene = new scenes.Gameover();
-            console.log("Starting GAME OVER scene");
+            currentScene = new scenes.Game();
+            console.log("Starting Game scene");
             break;
     }
-    
+
 }
